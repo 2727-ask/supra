@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --primary: #ff6b6b;
+  --secondary: #4ecdc4;
+  --bg: #f1f5f8;
+  --text: #2d3436;
+  --radius: 12px;
+  --shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+#app {
+  width: 100%;
+  max-width: 480px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+#new-task-input {
+  width: 100%;
+  padding: .8rem 1rem;
+  border: 2px solid var(--secondary);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: border-color .3s;
+}
+
+#add-task-btn {
+  margin-top: .8rem;
+  width: 100%;
+  padding: .8rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+#add-task-btn:hover {
+  transform: translateY(-2px);
+}
+
+#task-list {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+#task-list li {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  background: #fff7f7;
+  border-left: 6px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: transform .3s, opacity .3s;
+}
+
+.task-check {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--secondary);
+  cursor: pointer;
+}
+
+.task-text {
+  flex: 1;
+  outline: none;
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  opacity: .6;
+}
+
+button.edit-btn, button.delete-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: .4rem;
+}
+
+.edit-btn {
+  color: var(--secondary);
+}
+
+.delete-btn {
+  color: var(--primary);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  #app {
+    padding: 1.5rem;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(.95);
+  }
+}
+
+/* Animation classes */
+.fadeIn {
+  animation: fadeIn .4s ease-out;
+}
+
+.fadeOut {
+  animation: fadeOut .3s forwards;
+}

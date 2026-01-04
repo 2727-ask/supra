@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Modern Todo App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main id="app">
+        <header>
+            <h1>Colorful Modern Todo App</h1>
+        </header>
+        
+        <input id="new-task-input" placeholder="Add new task..." />
+        <button id="add-task-btn">Add Task</button>
+        
+        <ul id="task-list"></ul>
+        
+        <footer id="filters">
+            <button data-filter="all">All</button>
+            <button data-filter="active">Active</button>
+            <button data-filter="completed">Completed</button>
+        </footer>
+    </main>
+    
+    <template id="task-template">
+        <li>
+            <input type="checkbox" class="task-check" />
+            <span class="task-text" contenteditable="false"></span>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </li>
+    </template>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>

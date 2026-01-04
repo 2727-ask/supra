@@ -1,0 +1,280 @@
+/*
+ * VibrantTodo – style.css
+ * -------------------------------------------------
+ * This stylesheet defines the visual design for the VibrantTodo
+ * application. It provides CSS custom properties for theming, a
+ * responsive layout using Flexbox/Grid, and styling for all UI
+ * elements introduced in index.html.
+ *
+ * The script (script.js) is expected to update the `--accent-color`
+ * custom property at runtime based on the value of the <input type="color"
+ * id="accent-color"> element.
+ */
+
+/* ------------------------------------------------------------------
+ * 1. CSS Custom Properties (Theme)
+ * ------------------------------------------------------------------ */
+:root {
+    /* Primary accent colour – can be changed at runtime via JS */
+    --accent-color: #ff6b6b;   /* a vibrant coral */
+
+    /* Light background – used for the main app container */
+    --bg-light: #f5f5f5;
+
+    /* Dark background – used for header/footer or dark mode sections */
+    --bg-dark: #2c3e50;
+
+    /* Text colours derived from the background for good contrast */
+    --text-light: #ffffff;
+    --text-dark: #333333;
+
+    /* Transition timing */
+    --transition-duration: 0.2s;
+    --transition-ease: ease-in-out;
+}
+
+/* ------------------------------------------------------------------
+ * 2. Global Reset & Base Styles
+ * ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* ------------------------------------------------------------------
+ * 3. App Container
+ * ------------------------------------------------------------------ */
+#app {
+    background: var(--bg-light);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Header */
+#app > h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+/* ------------------------------------------------------------------
+ * 4. Todo Form
+ * ------------------------------------------------------------------ */
+#todo-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#new-todo {
+    flex: 1 1 auto;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color var(--transition-duration) var(--transition-ease);
+    background: #fff;
+    color: var(--text-dark);
+}
+
+#new-todo:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+}
+
+#todo-form button {
+    padding: 0.75rem 1.25rem;
+    background: var(--accent-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition-duration) var(--transition-ease),
+                transform var(--transition-duration) var(--transition-ease);
+}
+
+#todo-form button:hover {
+    background: darken(var(--accent-color), 10%);
+    transform: translateY(-2px);
+}
+
+#todo-form button:active {
+    transform: translateY(0);
+}
+
+/* ------------------------------------------------------------------
+ * 5. Todo List
+ * ------------------------------------------------------------------ */
+.todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background var(--transition-duration) var(--transition-ease),
+                opacity var(--transition-duration) var(--transition-ease);
+    cursor: grab;
+}
+
+.todo-item.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+.todo-item .text {
+    flex: 1 1 auto;
+    margin-right: 0.5rem;
+    word-break: break-word;
+}
+
+.todo-item button {
+    background: transparent;
+    border: none;
+    color: var(--text-dark);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem;
+    transition: color var(--transition-duration) var(--transition-ease);
+}
+
+.todo-item button:hover {
+    color: var(--accent-color);
+}
+
+/* Completed state */
+.todo-item.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: #777;
+}
+
+/* Editing state – we expect an <input> to replace the text */
+.todo-item.editing .text {
+    display: none;
+}
+
+.todo-item.editing input.edit-input {
+    flex: 1 1 auto;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 4px;
+    outline: none;
+}
+
+/* ------------------------------------------------------------------
+ * 6. Filters
+ * ------------------------------------------------------------------ */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background var(--transition-duration) var(--transition-ease),
+                color var(--transition-duration) var(--transition-ease);
+}
+
+.filter-btn:hover {
+    background: var(--accent-color);
+    color: var(--text-light);
+}
+
+.filter-btn.active {
+    background: var(--accent-color);
+    color: var(--text-light);
+}
+
+/* ------------------------------------------------------------------
+ * 7. Accent colour picker (runtime update handled by script.js)
+ * ------------------------------------------------------------------ */
+#accent-color {
+    align-self: center;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------------
+ * 8. Responsive Design
+ * ------------------------------------------------------------------ */
+@media (max-width: 600px) {
+    #app {
+        padding: 1rem;
+    }
+
+    #app > h1 {
+        font-size: 1.5rem;
+    }
+
+    #todo-form {
+        flex-direction: column;
+    }
+
+    #todo-form button {
+        width: 100%;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+}
+
+/* ------------------------------------------------------------------
+ * 9. Utility – Darken function fallback (CSS only works in modern browsers)
+ * ------------------------------------------------------------------ */
+@function darken($color, $percent) {
+    @return color-mod($color lightness(-$percent));
+}
+
+/* Note: The darken() helper above uses the CSS Color Module Level 4 syntax.
+ * If the browser does not support it, the hover state will simply retain the
+ * original accent colour – this is acceptable for graceful degradation.
+ */
