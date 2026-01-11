@@ -1,0 +1,31 @@
+/* Basic styling for the Minesweeper board */
+#minesweeper-container {
+    display: grid;
+    grid-template-columns: repeat(10, 30px); /* Adjust number of columns and size as needed */
+    grid-template-rows: repeat(10, 30px); /* Adjust number of rows and size as needed */
+    gap: 2px; /* Space between cells */
+    background-color: #f4f4f4;
+}
+
+.cell {
+    width: 30px; /* Width of each cell */
+    height: 30px; /* Height of each cell */
+    border: 1px solid #ccc; /* Border around each cell */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px; /* Font size for numbers and flags */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.cell.revealed {
+    background-color: #fff; /* Background color when cell is revealed */
+}
+
+.cell.mine {
+    background-color: red; /* Background color for mines */
+}
+
+.cell.flagged {
+    background-color: yellow; /* Background color for flagged cells */
+}

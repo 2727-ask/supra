@@ -57,7 +57,7 @@ if __name__ == "__main__":
     print("🚀 Starting AI Developer...")
     
     # Use stream to log state after each step
-    inputs = {"user_query": "Create a tic tac toe game with game ui"}
+    inputs = {"user_query": "Create a single-file Tetris game using only HTML, CSS, and vanilla JavaScript (ES6+). The file should be stand-alone (no external libraries) and run by opening the HTML file in a browser. Deliver well-commented, readable code and a brief usage/readme section at the top of the file explaining controls and how to run. Requirements:  Playfield (10x20 visible grid).  Tetrominoes with standard shapes (I, J, L, O, S, T, Z).  Piece spawn, movement (left/right/down), soft drop, hard drop.  Rotation (implement the Super Rotation System (SRS) or a reasonable rotation with wall kicks).  Next-piece preview (at least next 3) and Hold piece.  Line clearing with proper removal and collapse.  Scoring (single/double/triple/tetris), level progression (speed increases), and display of score, level, lines cleared.  Pause/resume and restart controls.  Save high score in localStorage.  Keyboard controls (arrow keys, space for hard drop, shift for hold, P to pause) and touch support for mobile (simple swipe/tap interface).  Responsive UI and basic styling (CSS) so it looks good on desktop and mobile.  No blocking UI; use requestAnimationFrame / setInterval responsibly.  Include unit-testable functions where appropriate (e.g., collision detection, rotation logic).  Accessibility: provide ARIA labels and allow keyboard-only play.  Add small sound effects (optional) but make them toggleable.  At top of file include a short checklist of acceptance criteria."}
     current_state = inputs
     
     for event in app.stream(inputs, stream_mode="values"):

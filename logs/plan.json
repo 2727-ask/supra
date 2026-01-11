@@ -1,59 +1,68 @@
 {
-  "user_query": "Create a tic tac toe game with game ui",
-  "name": "Tic Tac Toe Game",
-  "description": "A simple Tic Tac Toe game with a basic graphical user interface.",
+  "user_query": "Create a single-file Tetris game using only HTML, CSS, and vanilla JavaScript (ES6+). The file should be stand-alone (no external libraries) and run by opening the HTML file in a browser. Deliver well-commented, readable code and a brief usage/readme section at the top of the file explaining controls and how to run. Requirements:  Playfield (10x20 visible grid).  Tetrominoes with standard shapes (I, J, L, O, S, T, Z).  Piece spawn, movement (left/right/down), soft drop, hard drop.  Rotation (implement the Super Rotation System (SRS) or a reasonable rotation with wall kicks).  Next-piece preview (at least next 3) and Hold piece.  Line clearing with proper removal and collapse.  Scoring (single/double/triple/tetris), level progression (speed increases), and display of score, level, lines cleared.  Pause/resume and restart controls.  Save high score in localStorage.  Keyboard controls (arrow keys, space for hard drop, shift for hold, P to pause) and touch support for mobile (simple swipe/tap interface).  Responsive UI and basic styling (CSS) so it looks good on desktop and mobile.  No blocking UI; use requestAnimationFrame / setInterval responsibly.  Include unit-testable functions where appropriate (e.g., collision detection, rotation logic).  Accessibility: provide ARIA labels and allow keyboard-only play.  Add small sound effects (optional) but make them toggleable.  At top of file include a short checklist of acceptance criteria.",
+  "name": "Tetris Game",
+  "description": "A single-file Tetris game built with HTML, CSS, and vanilla JavaScript.",
   "techstack": [
     "HTML",
     "CSS",
     "JavaScript",
     "LocalStorage"
   ],
-  "research_notes": "APP: Tic Tac Toe Game\nGOAL: A simple Tic Tac Toe game with a basic graphical user interface.\nSTACK: HTML, CSS, JavaScript, LocalStorage\nSCOPE: MVP",
+  "research_notes": "APP: Tetris Game\nGOAL: A single-file Tetris game built with HTML, CSS, and vanilla JavaScript.\nSTACK: HTML, CSS, JavaScript, LocalStorage\nSCOPE: MVP",
   "task_queue": [
-    "Create index.html containing the game board, player turn indicator, and reset button.",
-    "Style the game board with grid lines and center the elements on the page.",
-    "Implement the game logic in script.js to handle player turns, check for win/loss/tie conditions, and update the UI accordingly.",
-    "Add event listeners to each cell of the game board to capture player moves.",
-    "Update the player turn indicator based on whose turn it is.",
-    "Handle the reset button to clear the game board and reset the game state.",
-    "Implement LocalStorage in localStorage.js to save the current game state so that the game can be resumed later.",
-    "Create styles.css which handles: Styling for the game board and elements"
+    "Create index.html importing script.js, styles.css, tetrominoes.js, and localStorageManager.js.",
+    "In index.html, create a canvas element with the id 'tetrisCanvas' to render the game grid.",
+    "In styles.css, define the layout for the game, including the size of the canvas and any necessary styling for UI elements like the scoreboard.",
+    "In script.js, initialize the game state, including creating a 2D array representing the 10x20 grid.",
+    "In script.js, implement the logic to draw the grid on the canvas using the HTML5 Canvas API.",
+    "In tetrominoes.js, define an object for each tetromino shape (I, J, L, O, S, T, Z) with properties like rotation points and colors.",
+    "In script.js, create a function to randomly select and place a new tetromino on the grid at the top row.",
+    "In script.js, implement logic for piece movement (left, right, down), soft drop, and hard drop using keyboard events.",
+    "In script.js, add collision detection to prevent pieces from moving through each other or off the grid.",
+    "In script.js, implement rotation logic for tetrominoes, ensuring they do not collide with existing blocks or go out of bounds.",
+    "In script.js, create a function to clear completed lines and update the score accordingly.",
+    "In localStorageManager.js, implement functions to save and load the player's high score using HTML5 LocalStorage.",
+    "In script.js, integrate the high score functionality by updating it whenever a new high score is achieved."
   ],
-  "current_task_index": 8,
+  "current_task_index": 13,
   "features": [
-    "Basic Tic Tac Toe gameplay",
-    "Player vs Player mode",
-    "Game board visualization",
-    "Win/Loss/Tie outcomes"
+    "10x20 visible grid",
+    "Standard tetrominoes (I, J, L, O, S, T, Z)",
+    "Piece movement, soft drop, hard drop, rotation",
+    "Next-piece preview and hold piece"
   ],
   "files": [
     {
       "path": "index.html",
-      "purpose": "Main UI"
+      "purpose": "The main HTML file that sets up the basic structure of the Tetris game. It includes a canvas element where the game will be rendered."
     },
     {
       "path": "styles.css",
-      "purpose": "Styling for the game board and elements"
+      "purpose": "Contains all the CSS styles for the game, including the layout, colors, and any animations."
     },
     {
       "path": "script.js",
-      "purpose": "Game logic, player interactions, and win/loss/tie outcomes"
+      "purpose": "This is the core JavaScript file that handles the game logic, including piece movement, collision detection, scoring, and game state management."
     },
     {
-      "path": "localStorage.js",
-      "purpose": "Handling of game state using LocalStorage"
+      "path": "tetrominoes.js",
+      "purpose": "A separate JavaScript file that defines the different tetromino shapes (I, J, L, O, S, T, Z) and their properties such as rotation points and colors."
+    },
+    {
+      "path": "localStorageManager.js",
+      "purpose": "Handles saving and loading the player's high score using HTML5 LocalStorage."
     }
   ],
   "logs": {
     "research": {
       "concept": {
-        "name": "Tic Tac Toe Game",
-        "description": "A simple Tic Tac Toe game with a basic graphical user interface.",
+        "name": "Tetris Game",
+        "description": "A single-file Tetris game built with HTML, CSS, and vanilla JavaScript.",
         "features": [
-          "Basic Tic Tac Toe gameplay",
-          "Player vs Player mode",
-          "Game board visualization",
-          "Win/Loss/Tie outcomes"
+          "10x20 visible grid",
+          "Standard tetrominoes (I, J, L, O, S, T, Z)",
+          "Piece movement, soft drop, hard drop, rotation",
+          "Next-piece preview and hold piece"
         ]
       },
       "stack": [
@@ -62,112 +71,173 @@
         "JavaScript",
         "LocalStorage"
       ],
-      "summary": "APP: Tic Tac Toe Game\nGOAL: A simple Tic Tac Toe game with a basic graphical user interface.\nSTACK: HTML, CSS, JavaScript, LocalStorage\nSCOPE: MVP"
+      "summary": "APP: Tetris Game\nGOAL: A single-file Tetris game built with HTML, CSS, and vanilla JavaScript.\nSTACK: HTML, CSS, JavaScript, LocalStorage\nSCOPE: MVP"
     },
     "planner": {
       "files_dict": {
-        "index.html": "Main UI",
-        "styles.css": "Styling for the game board and elements",
-        "script.js": "Game logic, player interactions, and win/loss/tie outcomes",
-        "localStorage.js": "Handling of game state using LocalStorage"
+        "index.html": "The main HTML file that sets up the basic structure of the Tetris game. It includes a canvas element where the game will be rendered.",
+        "styles.css": "Contains all the CSS styles for the game, including the layout, colors, and any animations.",
+        "script.js": "This is the core JavaScript file that handles the game logic, including piece movement, collision detection, scoring, and game state management.",
+        "tetrominoes.js": "A separate JavaScript file that defines the different tetromino shapes (I, J, L, O, S, T, Z) and their properties such as rotation points and colors.",
+        "localStorageManager.js": "Handles saving and loading the player's high score using HTML5 LocalStorage."
       },
       "task_queue": [
-        "Create index.html containing the game board, player turn indicator, and reset button.",
-        "Style the game board with grid lines and center the elements on the page.",
-        "Implement the game logic in script.js to handle player turns, check for win/loss/tie conditions, and update the UI accordingly.",
-        "Add event listeners to each cell of the game board to capture player moves.",
-        "Update the player turn indicator based on whose turn it is.",
-        "Handle the reset button to clear the game board and reset the game state.",
-        "Implement LocalStorage in localStorage.js to save the current game state so that the game can be resumed later.",
-        "Create styles.css which handles: Styling for the game board and elements"
+        "Create index.html importing script.js, styles.css, tetrominoes.js, and localStorageManager.js.",
+        "In index.html, create a canvas element with the id 'tetrisCanvas' to render the game grid.",
+        "In styles.css, define the layout for the game, including the size of the canvas and any necessary styling for UI elements like the scoreboard.",
+        "In script.js, initialize the game state, including creating a 2D array representing the 10x20 grid.",
+        "In script.js, implement the logic to draw the grid on the canvas using the HTML5 Canvas API.",
+        "In tetrominoes.js, define an object for each tetromino shape (I, J, L, O, S, T, Z) with properties like rotation points and colors.",
+        "In script.js, create a function to randomly select and place a new tetromino on the grid at the top row.",
+        "In script.js, implement logic for piece movement (left, right, down), soft drop, and hard drop using keyboard events.",
+        "In script.js, add collision detection to prevent pieces from moving through each other or off the grid.",
+        "In script.js, implement rotation logic for tetrominoes, ensuring they do not collide with existing blocks or go out of bounds.",
+        "In script.js, create a function to clear completed lines and update the score accordingly.",
+        "In localStorageManager.js, implement functions to save and load the player's high score using HTML5 LocalStorage.",
+        "In script.js, integrate the high score functionality by updating it whenever a new high score is achieved."
       ]
     },
     "execution": [
       {
         "task_index": 1,
-        "task": "Create index.html containing the game board, player turn indicator, and reset button.",
+        "task": "Create index.html importing script.js, styles.css, tetrominoes.js, and localStorageManager.js.",
         "updates": [
           {
             "action": "write",
             "path": "index.html",
-            "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Tic Tac Toe Game</title>\n<link rel=\"stylesheet\" href=\"styles.css\">\n</head>\n<body>\n<div id=\"game-board\">\n    <div class=\"cell\" data-index=\"0\"></div>\n    <div class=\"cell\" data-index=\"1\"></div>\n    <div class=\"cell\" data-index=\"2\"></div>\n    <div class=\"cell\" data-index=\"3\"></div>\n    <div class=\"cell\" data-index=\"4\"></div>\n    <div class=\"cell\" data-index=\"5\"></div>\n    <div class=\"cell\" data-index=\"6\"></div>\n    <div class=\"cell\" data-index=\"7\"></div>\n    <div class=\"cell\" data-index=\"8\"></div>\n</div>\n<div id=\"player-turn\">Player X's turn</div>\n<button id=\"reset-button\">Reset Game</button>\n\n<script src=\"script.js\"></script>\n</body>\n</html>"
+            "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Tetris Game</title>\n    <link rel=\"stylesheet\" href=\"styles.css\">\n</head>\n<body>\n    <div id=\"game-container\">\n        <div id=\"grid\"></div>\n        <div id=\"next-piece-preview\"></div>\n        <button id=\"hold-button\">Hold Piece</button>\n        <div id=\"score-board\">\n            <span>Score: <span id=\"score\">0</span></span>\n        </div>\n    </div>\n\n    <script src=\"tetrominoes.js\"></script>\n    <script src=\"localStorageManager.js\"></script>\n    <script src=\"script.js\"></script>\n</body>\n</html>"
           }
         ]
       },
       {
         "task_index": 2,
-        "task": "Style the game board with grid lines and center the elements on the page.",
+        "task": "In index.html, create a canvas element with the id 'tetrisCanvas' to render the game grid.",
         "updates": [
           {
             "action": "write",
-            "path": "styles.css",
-            "content": "/* Reset some default styles */\n* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}\n\nbody {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    height: 100vh;\n    background-color: #f4f4f9;\n    font-family: Arial, sans-serif;\n}\n\n#game-board {\n    display: grid;\n    grid-template-columns: repeat(3, 100px);\n    grid-gap: 5px;\n    border: 2px solid #333;\n    padding: 10px;\n}\n\n.cell {\n    width: 100px;\n    height: 100px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 2em;\n    cursor: pointer;\n    background-color: #fff;\n    border: 1px solid #333;\n}\n\n#player-turn {\n    margin-top: 20px;\n    font-size: 1.5em;\n}\n\n#reset-button {\n    margin-top: 20px;\n    padding: 10px 20px;\n    font-size: 1em;\n    cursor: pointer;\n}"
+            "path": "index.html",
+            "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Tetris Game</title>\n    <link rel=\"stylesheet\" href=\"styles.css\">\n</head>\n<body>\n    <div id=\"game-container\">\n        <canvas id=\"tetrisCanvas\"></canvas>\n        <div id=\"next-piece-preview\"></div>\n        <button id=\"hold-button\">Hold Piece</button>\n        <div id=\"score-board\">\n            <span>Score: <span id=\"score\">0</span></span>\n        </div>\n    </div>\n\n    <script src=\"tetrominoes.js\"></script>\n    <script src=\"localStorageManager.js\"></script>\n    <script src=\"script.js\"></script>\n</body>\n</html>"
           }
         ]
       },
       {
         "task_index": 3,
-        "task": "Implement the game logic in script.js to handle player turns, check for win/loss/tie conditions, and update the UI accordingly.",
+        "task": "In styles.css, define the layout for the game, including the size of the canvas and any necessary styling for UI elements like the scoreboard.",
         "updates": [
           {
             "action": "write",
-            "path": "script.js",
-            "content": "document.addEventListener('DOMContentLoaded', () => {\n    const cells = document.querySelectorAll('.cell');\n    const playerTurnDisplay = document.getElementById('player-turn');\n    const resetButton = document.getElementById('reset-button');\n    let currentPlayer = 'X';\n    let gameBoard = ['', '', '', '', '', '', '', '', ''];\n    let gameActive = true;\n\n    function handleCellClick(event) {\n        const cellIndex = event.target.getAttribute('data-index');\n\n        if (gameBoard[cellIndex] !== '' || !gameActive) return;\n\n        placeMark(event.target, currentPlayer);\n        updateGameBoard(cellIndex, currentPlayer);\n\n        if (checkWin()) {\n            endGame(`Player ${currentPlayer} wins!`);\n            gameActive = false;\n        } else if (isDraw()) {\n            endGame('It\\'s a draw!');\n            gameActive = false;\n        } else {\n            switchPlayer();\n        }\n    }\n\n    function placeMark(cell, currentMarker) {\n        cell.textContent = currentMarker;\n    }\n\n    function updateGameBoard(index, marker) {\n        gameBoard[index] = marker;\n    }\n\n    function checkWin() {\n        const winConditions = [\n            [0, 1, 2],\n            [3, 4, 5],\n            [6, 7, 8],\n            [0, 3, 6],\n            [1, 4, 7],\n            [2, 5, 8],\n            [0, 4, 8],\n            [2, 4, 6]\n        ];\n\n        return winConditions.some(condition => {\n            return condition.every(index => gameBoard[index] === currentPlayer);\n        });\n    }\n\n    function isDraw() {\n        return gameBoard.every(cell => cell !== '');\n    }\n\n    function switchPlayer() {\n        currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';\n        playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n    }\n\n    function endGame(message) {\n        playerTurnDisplay.textContent = message;\n        cells.forEach(cell => cell.removeEventListener('click', handleCellClick));\n    }\n\n    resetButton.addEventListener('click', () => {\n        gameBoard = ['', '', '', '', '', '', '', '', ''];\n        currentPlayer = 'X';\n        gameActive = true;\n        playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n        cells.forEach(cell => {\n            cell.textContent = '';\n            cell.addEventListener('click', handleCellClick);\n        });\n    });\n\n    cells.forEach(cell => {\n        cell.addEventListener('click', handleCellClick);\n    });\n});\n"
+            "path": "styles.css",
+            "content": "/* Set the size of the game container */\n#game-container {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    width: 300px;\n    margin: 50px auto;\n}\n\n/* Style the canvas for Tetris */\n#tetrisCanvas {\n    border: 1px solid #000;\n    background-color: #f0f0f0;\n}\n\n/* Style the next piece preview container */\n#next-piece-preview {\n    margin-top: 20px;\n    width: 80px;\n    height: 80px;\n    border: 1px solid #ccc;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n/* Style the hold button */\n#hold-button {\n    margin-top: 20px;\n    padding: 10px 20px;\n    font-size: 16px;\n    cursor: pointer;\n}\n\n/* Style the score board container */\n#score-board {\n    margin-top: 20px;\n    font-size: 18px;\n}"
           }
         ]
       },
       {
         "task_index": 4,
-        "task": "Add event listeners to each cell of the game board to capture player moves.",
+        "task": "In script.js, initialize the game state, including creating a 2D array representing the 10x20 grid.",
         "updates": [
           {
             "action": "write",
             "path": "script.js",
-            "content": "document.addEventListener('DOMContentLoaded', () => {\n    const cells = document.querySelectorAll('.cell');\n    const playerTurnDisplay = document.getElementById('player-turn');\n    const resetButton = document.getElementById('reset-button');\n    let currentPlayer = 'X';\n    let gameBoard = ['', '', '', '', '', '', '', '', ''];\n    let gameActive = true;\n\n    function handleCellClick(event) {\n        const cellIndex = event.target.getAttribute('data-index');\n\n        if (gameBoard[cellIndex] !== '' || !gameActive) return;\n\n        placeMark(event.target, currentPlayer);\n        updateGameBoard(cellIndex, currentPlayer);\n\n        if (checkWin()) {\n            endGame(`Player ${currentPlayer} wins!`);\n            gameActive = false;\n        } else if (isDraw()) {\n            endGame('It\\'s a draw!');\n            gameActive = false;\n        } else {\n            switchPlayer();\n        }\n    }\n\n    function placeMark(cell, currentMarker) {\n        cell.textContent = currentMarker;\n    }\n\n    function updateGameBoard(index, marker) {\n        gameBoard[index] = marker;\n    }\n\n    function checkWin() {\n        const winConditions = [\n            [0, 1, 2],\n            [3, 4, 5],\n            [6, 7, 8],\n            [0, 3, 6],\n            [1, 4, 7],\n            [2, 5, 8],\n            [0, 4, 8],\n            [2, 4, 6]\n        ];\n\n        return winConditions.some(condition => {\n            return condition.every(index => gameBoard[index] === currentPlayer);\n        });\n    }\n\n    function isDraw() {\n        return gameBoard.every(cell => cell !== '');\n    }\n\n    function switchPlayer() {\n        currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';\n        playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n    }\n\n    function endGame(message) {\n        playerTurnDisplay.textContent = message;\n        cells.forEach(cell => cell.removeEventListener('click', handleCellClick));\n    }\n\n    resetButton.addEventListener('click', () => {\n        gameBoard = ['', '', '', '', '', '', '', '', ''];\n        currentPlayer = 'X';\n        gameActive = true;\n        playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n        cells.forEach(cell => {\n            cell.textContent = '';\n            cell.addEventListener('click', handleCellClick);\n        });\n    });\n\n    cells.forEach(cell => {\n        cell.addEventListener('click', handleCellClick);\n    });\n});"
+            "content": "// Initialize the game state\nconst gridWidth = 10;\nconst gridHeight = 20;\nlet gameState = Array.from({ length: gridHeight }, () => Array(gridWidth).fill(0));\n\n// Function to draw the grid on the canvas\nfunction drawGrid() {\n    const canvas = document.getElementById('tetrisCanvas');\n    const ctx = canvas.getContext('2d');\n    canvas.width = gridWidth * 30;\n    canvas.height = gridHeight * 30;\n\n    for (let row = 0; row < gridHeight; row++) {\n        for (let col = 0; col < gridWidth; col++) {\n            if (gameState[row][col] !== 0) {\n                ctx.fillStyle = 'blue';\n                ctx.fillRect(col * 30, row * 30, 30, 30);\n            }\n        }\n    }\n}\n\n// Initialize the game\nfunction initGame() {\n    drawGrid();\n}\n\n// Call the initGame function to start the game\ninitGame();\n"
           }
         ]
       },
       {
         "task_index": 5,
-        "task": "Update the player turn indicator based on whose turn it is.",
+        "task": "In script.js, implement the logic to draw the grid on the canvas using the HTML5 Canvas API.",
         "updates": [
           {
             "action": "write",
             "path": "script.js",
-            "content": "document.addEventListener('DOMContentLoaded', () => {\n    const cells = document.querySelectorAll('.cell');\n    const playerTurnDisplay = document.getElementById('player-turn');\n    const resetButton = document.getElementById('reset-button');\n    let currentPlayer = 'X';\n    let gameBoard = ['', '', '', '', '', '', '', '', ''];\n    let gameActive = true;\n\n    function handleCellClick(event) {\n        const cellIndex = event.target.getAttribute('data-index');\n\n        if (gameBoard[cellIndex] !== '' || !gameActive) return;\n\n        placeMark(event.target, currentPlayer);\n        updateGameBoard(cellIndex, currentPlayer);\n\n        if (checkWin()) {\n            endGame(`Player ${currentPlayer} wins!`);\n            gameActive = false;\n        } else if (isDraw()) {\n            endGame('It\\'s a draw!');\n            gameActive = false;\n        } else {\n            switchPlayer();\n        }\n    }\n\n    function placeMark(cell, currentMarker) {\n        cell.textContent = currentMarker;\n    }\n\n    function updateGameBoard(index, marker) {\n        gameBoard[index] = marker;\n    }\n\n    function checkWin() {\n        const winConditions = [\n            [0, 1, 2],\n            [3, 4, 5],\n            [6, 7, 8],\n            [0, 3, 6],\n            [1, 4, 7],\n            [2, 5, 8],\n            [0, 4, 8],\n            [2, 4, 6]\n        ];\n\n        return winConditions.some(condition => {\n            return condition.every(index => gameBoard[index] === currentPlayer);\n        });\n    }\n\n    function isDraw() {\n        return gameBoard.every(cell => cell !== '');\n    }\n\n    function switchPlayer() {\n        currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';\n        playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n    }\n\n    function endGame(message) {\n        playerTurnDisplay.textContent = message;\n        cells.forEach(cell => cell.removeEventListener('click', handleCellClick));\n    }\n\n    resetButton.addEventListener('click', () => {\n        gameBoard = ['', '', '', '', '', '', '', '', ''];\n        currentPlayer = 'X';\n        gameActive = true;\n        playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n        cells.forEach(cell => {\n            cell.textContent = '';\n            cell.addEventListener('click', handleCellClick);\n        });\n    });\n\n    cells.forEach(cell => {\n        cell.addEventListener('click', handleCellClick);\n    });\n});"
+            "content": "// Initialize the game state\nconst gridWidth = 10;\nconst gridHeight = 20;\nlet gameState = Array.from({ length: gridHeight }, () => Array(gridWidth).fill(0));\n\n// Function to draw the grid on the canvas\nfunction drawGrid() {\n    const canvas = document.getElementById('tetrisCanvas');\n    const ctx = canvas.getContext('2d');\n    canvas.width = gridWidth * 30;\n    canvas.height = gridHeight * 30;\n\n    for (let row = 0; row < gridHeight; row++) {\n        for (let col = 0; col < gridWidth; col++) {\n            ctx.strokeStyle = '#ccc';\n            ctx.strokeRect(col * 30, row * 30, 30, 30);\n            if (gameState[row][col] !== 0) {\n                ctx.fillStyle = 'blue';\n                ctx.fillRect(col * 30, row * 30, 30, 30);\n            }\n        }\n    }\n}\n\n// Initialize the game\nfunction initGame() {\n    drawGrid();\n}\n\n// Call the initGame function to start the game\ninitGame();"
           }
         ]
       },
       {
         "task_index": 6,
-        "task": "Handle the reset button to clear the game board and reset the game state.",
+        "task": "In tetrominoes.js, define an object for each tetromino shape (I, J, L, O, S, T, Z) with properties like rotation points and colors.",
         "updates": [
           {
             "action": "write",
-            "path": "script.js",
-            "content": "document.addEventListener('DOMContentLoaded', () => {\n    const cells = document.querySelectorAll('.cell');\n    const playerTurnDisplay = document.getElementById('player-turn');\n    const resetButton = document.getElementById('reset-button');\n    let currentPlayer = 'X';\n    let gameBoard = ['', '', '', '', '', '', '', '', ''];\n    let gameActive = true;\n\n    function handleCellClick(event) {\n        const cellIndex = event.target.getAttribute('data-index');\n\n        if (gameBoard[cellIndex] !== '' || !gameActive) return;\n\n        placeMark(event.target, currentPlayer);\n        updateGameBoard(cellIndex, currentPlayer);\n\n        if (checkWin()) {\n            endGame(`Player ${currentPlayer} wins!`);\n            gameActive = false;\n        } else if (isDraw()) {\n            endGame('It\\'s a draw!');\n            gameActive = false;\n        } else {\n            switchPlayer();\n        }\n    }\n\n    function placeMark(cell, currentMarker) {\n        cell.textContent = currentMarker;\n    }\n\n    function updateGameBoard(index, marker) {\n        gameBoard[index] = marker;\n    }\n\n    function checkWin() {\n        const winConditions = [\n            [0, 1, 2],\n            [3, 4, 5],\n            [6, 7, 8],\n            [0, 3, 6],\n            [1, 4, 7],\n            [2, 5, 8],\n            [0, 4, 8],\n            [2, 4, 6]\n        ];\n\n        return winConditions.some(condition => {\n            return condition.every(index => gameBoard[index] === currentPlayer);\n        });\n    }\n\n    function isDraw() {\n        return gameBoard.every(cell => cell !== '');\n    }\n\n    function switchPlayer() {\n        currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';\n        playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n    }\n\n    function endGame(message) {\n        playerTurnDisplay.textContent = message;\n        cells.forEach(cell => cell.removeEventListener('click', handleCellClick));\n    }\n\n    resetButton.addEventListener('click', () => {\n        gameBoard = ['', '', '', '', '', '', '', '', ''];\n        currentPlayer = 'X';\n        gameActive = true;\n        playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n        cells.forEach(cell => {\n            cell.textContent = '';\n            cell.addEventListener('click', handleCellClick);\n        });\n    });\n\n    cells.forEach(cell => {\n        cell.addEventListener('click', handleCellClick);\n    });\n});"
+            "path": "tetrominoes.js",
+            "content": "const tetrominoes = {\n    I: {\n        shape: [\n            [1, 1, 1, 1]\n        ],\n        color: 'cyan'\n    },\n    J: {\n        shape: [\n            [1, 0, 0],\n            [1, 1, 1]\n        ],\n        color: 'blue'\n    },\n    L: {\n        shape: [\n            [0, 0, 1],\n            [1, 1, 1]\n        ],\n        color: 'orange'\n    },\n    O: {\n        shape: [\n            [1, 1],\n            [1, 1]\n        ],\n        color: 'yellow'\n    },\n    S: {\n        shape: [\n            [0, 1, 1],\n            [1, 1, 0]\n        ],\n        color: 'green'\n    },\n    T: {\n        shape: [\n            [0, 1, 0],\n            [1, 1, 1]\n        ],\n        color: 'purple'\n    },\n    Z: {\n        shape: [\n            [1, 1, 0],\n            [0, 1, 1]\n        ],\n        color: 'red'\n    }\n};\n"
           }
         ]
       },
       {
         "task_index": 7,
-        "task": "Implement LocalStorage in localStorage.js to save the current game state so that the game can be resumed later.",
+        "task": "In script.js, create a function to randomly select and place a new tetromino on the grid at the top row.",
         "updates": [
           {
             "action": "write",
-            "path": "localStorage.js",
-            "content": "document.addEventListener('DOMContentLoaded', () => {\n    const cells = document.querySelectorAll('.cell');\n    const playerTurnDisplay = document.getElementById('player-turn');\n    const resetButton = document.getElementById('reset-button');\n    let currentPlayer = 'X';\n    let gameBoard = ['', '', '', '', '', '', '', '', ''];\n    let gameActive = true;\n\n    // Load game state from localStorage if available\n    loadGameState();\n\n    function handleCellClick(event) {\n        const cellIndex = event.target.getAttribute('data-index');\n\n        if (gameBoard[cellIndex] !== '' || !gameActive) return;\n\n        placeMark(event.target, currentPlayer);\n        updateGameBoard(cellIndex, currentPlayer);\n\n        if (checkWin()) {\n            endGame(`Player ${currentPlayer} wins!`);\n            gameActive = false;\n        } else if (isDraw()) {\n            endGame('It\\'s a draw!');\n            gameActive = false;\n        } else {\n            switchPlayer();\n        }\n    }\n\n    function placeMark(cell, currentMarker) {\n        cell.textContent = currentMarker;\n    }\n\n    function updateGameBoard(index, marker) {\n        gameBoard[index] = marker;\n        saveGameState(); // Save the updated game state to localStorage\n    }\n\n    function checkWin() {\n        const winConditions = [\n            [0, 1, 2],\n            [3, 4, 5],\n            [6, 7, 8],\n            [0, 3, 6],\n            [1, 4, 7],\n            [2, 5, 8],\n            [0, 4, 8],\n            [2, 4, 6]\n        ];\n\n        return winConditions.some(condition => {\n            return condition.every(index => gameBoard[index] === currentPlayer);\n        });\n    }\n\n    function isDraw() {\n        return gameBoard.every(cell => cell !== '');\n    }\n\n    function switchPlayer() {\n        currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';\n        playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n    }\n\n    function endGame(message) {\n        playerTurnDisplay.textContent = message;\n        cells.forEach(cell => cell.removeEventListener('click', handleCellClick));\n    }\n\n    resetButton.addEventListener('click', () => {\n        gameBoard = ['', '', '', '', '', '', '', '', ''];\n        currentPlayer = 'X';\n        gameActive = true;\n        playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n        cells.forEach(cell => {\n            cell.textContent = '';\n            cell.addEventListener('click', handleCellClick);\n        });\n        saveGameState(); // Reset the saved game state\n    });\n\n    cells.forEach(cell => {\n        cell.addEventListener('click', handleCellClick);\n    });\n\n    function loadGameState() {\n        const gameState = localStorage.getItem('ticTacToeGame');\n        if (gameState) {\n            const parsedState = JSON.parse(gameState);\n            gameBoard = parsedState.gameBoard;\n            currentPlayer = parsedState.currentPlayer;\n            gameActive = parsedState.gameActive;\n            playerTurnDisplay.textContent = `Player ${currentPlayer}'s turn`;\n            cells.forEach((cell, index) => {\n                cell.textContent = gameBoard[index];\n                if (gameBoard[index] !== '') {\n                    cell.removeEventListener('click', handleCellClick);\n                }\n            });\n        }\n    }\n\n    function saveGameState() {\n        localStorage.setItem('ticTacToeGame', JSON.stringify({\n            gameBoard: gameBoard,\n            currentPlayer: currentPlayer,\n            gameActive: gameActive\n        }));\n    }\n});\n"
+            "path": "script.js",
+            "content": "// Initialize the game state\nconst gridWidth = 10;\nconst gridHeight = 20;\nlet gameState = Array.from({ length: gridHeight }, () => Array(gridWidth).fill(0));\nlet currentTetromino = null;\n\n// Function to draw the grid on the canvas\nfunction drawGrid() {\n    const canvas = document.getElementById('tetrisCanvas');\n    const ctx = canvas.getContext('2d');\n    canvas.width = gridWidth * 30;\n    canvas.height = gridHeight * 30;\n\n    for (let row = 0; row < gridHeight; row++) {\n        for (let col = 0; col < gridWidth; col++) {\n            ctx.strokeStyle = '#ccc';\n            ctx.strokeRect(col * 30, row * 30, 30, 30);\n            if (gameState[row][col] !== 0) {\n                ctx.fillStyle = 'blue';\n                ctx.fillRect(col * 30, row * 30, 30, 30);\n            }\n        }\n    }\n\n    // Draw the current tetromino\n    if (currentTetromino) {\n        for (let row = 0; row < currentTetromino.shape.length; row++) {\n            for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n                if (currentTetromino.shape[row][col] !== 0) {\n                    ctx.fillStyle = currentTetromino.color;\n                    ctx.fillRect((currentTetromino.x + col) * 30, (currentTetromino.y + row) * 30, 30, 30);\n                }\n            }\n        }\n    }\n}\n\n// Function to place a new tetromino at the top row\nfunction placeNewTetromino() {\n    const tetrominoKeys = Object.keys(tetrominoes);\n    const randomIndex = Math.floor(Math.random() * tetrominoKeys.length);\n    const randomTetrominoKey = tetrominoKeys[randomIndex];\n    currentTetromino = {\n        shape: tetrominoes[randomTetrominoKey].shape,\n        color: tetrominoes[randomTetrominoKey].color,\n        x: Math.floor(gridWidth / 2) - Math.floor(tetrominoes[randomTetrominoKey].shape[0].length / 2),\n        y: 0\n    };\n\n    // Check if the new tetromino can be placed at the top row\n    for (let row = 0; row < currentTetromino.shape.length; row++) {\n        for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n            if (currentTetromino.shape[row][col] !== 0 && gameState[currentTetromino.y + row][currentTetromino.x + col] !== 0) {\n                alert('Game Over!');\n                resetGame();\n                return;\n            }\n        }\n    }\n\n    // Place the new tetromino on the grid\n    for (let row = 0; row < currentTetromino.shape.length; row++) {\n        for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n            if (currentTetromino.shape[row][col] !== 0) {\n                gameState[currentTetromino.y + row][currentTetromino.x + col] = currentTetromino.color;\n            }\n        }\n    }\n\n    // Draw the grid\n    drawGrid();\n}\n\n// Function to reset the game state\nfunction resetGame() {\n    gameState = Array.from({ length: gridHeight }, () => Array(gridWidth).fill(0));\n    placeNewTetromino();\n}\n\n// Initialize the game\nfunction initGame() {\n    drawGrid();\n    placeNewTetromino();\n}\n\n// Call the initGame function to start the game\ninitGame();\n\n// Event listener for key presses\ndocument.addEventListener('keydown', (event) => {\n    switch (event.key) {\n        case 'ArrowLeft':\n            // Move left\n            break;\n        case 'ArrowRight':\n            // Move right\n            break;\n        case 'ArrowDown':\n            // Soft drop\n            break;\n        case 'ArrowUp':\n            // Rotate\n            break;\n    }\n});"
           }
         ]
       },
       {
         "task_index": 8,
-        "task": "Create styles.css which handles: Styling for the game board and elements",
+        "task": "In script.js, implement logic for piece movement (left, right, down), soft drop, and hard drop using keyboard events.",
         "updates": [
           {
             "action": "write",
-            "path": "styles.css",
-            "content": "/* Reset some default styles */\n* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}\n\nbody {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    height: 100vh;\n    background-color: #f4f4f9;\n    font-family: Arial, sans-serif;\n}\n\n#game-board {\n    display: grid;\n    grid-template-columns: repeat(3, 100px);\n    grid-gap: 5px;\n    border: 2px solid #333;\n    padding: 10px;\n}\n\n.cell {\n    width: 100px;\n    height: 100px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 2em;\n    cursor: pointer;\n    background-color: #fff;\n    border: 1px solid #333;\n}\n\n.cell:hover {\n    background-color: #e0e0e0;\n}\n\n#player-turn {\n    margin-top: 20px;\n    font-size: 1.5em;\n}\n\n#reset-button {\n    margin-top: 20px;\n    padding: 10px 20px;\n    font-size: 1em;\n    cursor: pointer;\n}"
+            "path": "script.js",
+            "content": "// Initialize the game state\nconst gridWidth = 10;\nconst gridHeight = 20;\nlet gameState = Array.from({ length: gridHeight }, () => Array(gridWidth).fill(0));\nlet currentTetromino = null;\n\n// Function to draw the grid on the canvas\nfunction drawGrid() {\n    const canvas = document.getElementById('tetrisCanvas');\n    const ctx = canvas.getContext('2d');\n    canvas.width = gridWidth * 30;\n    canvas.height = gridHeight * 30;\n\n    for (let row = 0; row < gridHeight; row++) {\n        for (let col = 0; col < gridWidth; col++) {\n            ctx.strokeStyle = '#ccc';\n            ctx.strokeRect(col * 30, row * 30, 30, 30);\n            if (gameState[row][col] !== 0) {\n                ctx.fillStyle = gameState[row][col];\n                ctx.fillRect(col * 30, row * 30, 30, 30);\n            }\n        }\n    }\n\n    // Draw the current tetromino\n    if (currentTetromino) {\n        for (let row = 0; row < currentTetromino.shape.length; row++) {\n            for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n                if (currentTetromino.shape[row][col] !== 0) {\n                    ctx.fillStyle = currentTetromino.color;\n                    ctx.fillRect((currentTetromino.x + col) * 30, (currentTetromino.y + row) * 30, 30, 30);\n                }\n            }\n        }\n    }\n}\n\n// Function to place a new tetromino at the top row\nfunction placeNewTetromino() {\n    const tetrominoKeys = Object.keys(tetrominoes);\n    const randomIndex = Math.floor(Math.random() * tetrominoKeys.length);\n    const randomTetrominoKey = tetrominoKeys[randomIndex];\n    currentTetromino = {\n        shape: tetrominoes[randomTetrominoKey].shape,\n        color: tetrominoes[randomTetrominoKey].color,\n        x: Math.floor(gridWidth / 2) - Math.floor(tetrominoes[randomTetrominoKey].shape[0].length / 2),\n        y: 0\n    };\n\n    // Check if the new tetromino can be placed at the top row\n    for (let row = 0; row < currentTetromino.shape.length; row++) {\n        for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n            if (currentTetromino.shape[row][col] !== 0 && gameState[currentTetromino.y + row][currentTetromino.x + col] !== 0) {\n                alert('Game Over!');\n                resetGame();\n                return;\n            }\n        }\n    }\n\n    // Place the new tetromino on the grid\n    for (let row = 0; row < currentTetromino.shape.length; row++) {\n        for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n            if (currentTetromino.shape[row][col] !== 0) {\n                gameState[currentTetromino.y + row][currentTetromino.x + col] = currentTetromino.color;\n            }\n        }\n    }\n\n    // Draw the grid\n    drawGrid();\n}\n\n// Function to reset the game state\nfunction resetGame() {\n    gameState = Array.from({ length: gridHeight }, () => Array(gridWidth).fill(0));\n    placeNewTetromino();\n}\n\n// Initialize the game\nfunction initGame() {\n    drawGrid();\n    placeNewTetromino();\n}\n\n// Call the initGame function to start the game\ninitGame();\n\n// Event listener for key presses\ndocument.addEventListener('keydown', (event) => {\n    switch (event.key) {\n        case 'ArrowLeft':\n            // Move left\n            if (!checkCollision(currentTetromino, -1, 0)) {\n                currentTetromino.x--;\n            }\n            break;\n        case 'ArrowRight':\n            // Move right\n            if (!checkCollision(currentTetromino, 1, 0)) {\n                currentTetromino.x++;\n            }\n            break;\n        case 'ArrowDown':\n            // Soft drop\n            if (!checkCollision(currentTetromino, 0, 1)) {\n                currentTetromino.y++;\n            } else {\n                placeNewTetromino();\n            }\n            break;\n        case 'ArrowUp':\n            // Rotate\n            const rotatedShape = rotate(currentTetromino.shape);\n            if (!checkCollision({ shape: rotatedShape, x: currentTetromino.x, y: currentTetromino.y }, 0, 0)) {\n                currentTetromino.shape = rotatedShape;\n            }\n            break;\n    }\n\n    drawGrid();\n});\n\n// Function to check for collision\nfunction checkCollision(tetromino, offsetX, offsetY) {\n    for (let row = 0; row < tetromino.shape.length; row++) {\n        for (let col = 0; col < tetromino.shape[row].length; col++) {\n            if (tetromino.shape[row][col] !== 0) {\n                const newRow = tetromino.y + row + offsetY;\n                const newCol = tetromino.x + col + offsetX;\n\n                // Check for out of bounds\n                if (newRow < 0 || newRow >= gridHeight || newCol < 0 || newCol >= gridWidth) {\n                    return true;\n                }\n\n                // Check for collision with existing blocks\n                if (gameState[newRow][newCol] !== 0) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n\n// Function to rotate the tetromino\nfunction rotate(shape) {\n    const newShape = [];\n    for (let col = 0; col < shape[0].length; col++) {\n        newShape.push([]);\n        for (let row = shape.length - 1; row >= 0; row--) {\n            newShape[col].push(shape[row][col]);\n        }\n    }\n    return newShape;\n}"
+          }
+        ]
+      },
+      {
+        "task_index": 9,
+        "task": "In script.js, add collision detection to prevent pieces from moving through each other or off the grid.",
+        "updates": [
+          {
+            "action": "write",
+            "path": "script.js",
+            "content": "// Initialize the game state\nconst gridWidth = 10;\nconst gridHeight = 20;\nlet gameState = Array.from({ length: gridHeight }, () => Array(gridWidth).fill(0));\nlet currentTetromino = null;\n\n// Function to draw the grid on the canvas\nfunction drawGrid() {\n    const canvas = document.getElementById('tetrisCanvas');\n    const ctx = canvas.getContext('2d');\n    canvas.width = gridWidth * 30;\n    canvas.height = gridHeight * 30;\n\n    for (let row = 0; row < gridHeight; row++) {\n        for (let col = 0; col < gridWidth; col++) {\n            ctx.strokeStyle = '#ccc';\n            ctx.strokeRect(col * 30, row * 30, 30, 30);\n            if (gameState[row][col] !== 0) {\n                ctx.fillStyle = gameState[row][col];\n                ctx.fillRect(col * 30, row * 30, 30, 30);\n            }\n        }\n    }\n\n    // Draw the current tetromino\n    if (currentTetromino) {\n        for (let row = 0; row < currentTetromino.shape.length; row++) {\n            for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n                if (currentTetromino.shape[row][col] !== 0) {\n                    ctx.fillStyle = currentTetromino.color;\n                    ctx.fillRect((currentTetromino.x + col) * 30, (currentTetromino.y + row) * 30, 30, 30);\n                }\n            }\n        }\n    }\n}\n\n// Function to place a new tetromino at the top row\nfunction placeNewTetromino() {\n    const tetrominoKeys = Object.keys(tetrominoes);\n    const randomIndex = Math.floor(Math.random() * tetrominoKeys.length);\n    const randomTetrominoKey = tetrominoKeys[randomIndex];\n    currentTetromino = {\n        shape: tetrominoes[randomTetrominoKey].shape,\n        color: tetrominoes[randomTetrominoKey].color,\n        x: Math.floor(gridWidth / 2) - Math.floor(tetrominoes[randomTetrominoKey].shape[0].length / 2),\n        y: 0\n    };\n\n    // Check if the new tetromino can be placed at the top row\n    for (let row = 0; row < currentTetromino.shape.length; row++) {\n        for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n            if (currentTetromino.shape[row][col] !== 0 && gameState[currentTetromino.y + row][currentTetromino.x + col] !== 0) {\n                alert('Game Over!');\n                resetGame();\n                return;\n            }\n        }\n    }\n\n    // Place the new tetromino on the grid\n    for (let row = 0; row < currentTetromino.shape.length; row++) {\n        for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n            if (currentTetromino.shape[row][col] !== 0) {\n                gameState[currentTetromino.y + row][currentTetromino.x + col] = currentTetromino.color;\n            }\n        }\n    }\n\n    // Draw the grid\n    drawGrid();\n}\n\n// Function to reset the game state\nfunction resetGame() {\n    gameState = Array.from({ length: gridHeight }, () => Array(gridWidth).fill(0));\n    placeNewTetromino();\n}\n\n// Initialize the game\nfunction initGame() {\n    drawGrid();\n    placeNewTetromino();\n}\n\n// Call the initGame function to start the game\ninitGame();\n\n// Event listener for key presses\ndocument.addEventListener('keydown', (event) => {\n    switch (event.key) {\n        case 'ArrowLeft':\n            // Move left\n            if (!checkCollision(currentTetromino, -1, 0)) {\n                currentTetromino.x--;\n            }\n            break;\n        case 'ArrowRight':\n            // Move right\n            if (!checkCollision(currentTetromino, 1, 0)) {\n                currentTetromino.x++;\n            }\n            break;\n        case 'ArrowDown':\n            // Soft drop\n            if (!checkCollision(currentTetromino, 0, 1)) {\n                currentTetromino.y++;\n            } else {\n                placeNewTetromino();\n            }\n            break;\n        case 'ArrowUp':\n            // Rotate\n            const rotatedShape = rotate(currentTetromino.shape);\n            if (!checkCollision({ shape: rotatedShape, x: currentTetromino.x, y: currentTetromino.y }, 0, 0)) {\n                currentTetromino.shape = rotatedShape;\n            }\n            break;\n    }\n\n    drawGrid();\n});\n\n// Function to check for collision\nfunction checkCollision(tetromino, offsetX, offsetY) {\n    for (let row = 0; row < tetromino.shape.length; row++) {\n        for (let col = 0; col < tetromino.shape[row].length; col++) {\n            if (tetromino.shape[row][col] !== 0) {\n                const newRow = tetromino.y + row + offsetY;\n                const newCol = tetromino.x + col + offsetX;\n\n                // Check for out of bounds\n                if (newRow < 0 || newRow >= gridHeight || newCol < 0 || newCol >= gridWidth) {\n                    return true;\n                }\n\n                // Check for collision with existing blocks\n                if (gameState[newRow][newCol] !== 0) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n\n// Function to rotate the tetromino\nfunction rotate(shape) {\n    const newShape = [];\n    for (let col = 0; col < shape[0].length; col++) {\n        newShape.push([]);\n        for (let row = shape.length - 1; row >= 0; row--) {\n            newShape[col].push(shape[row][col]);\n        }\n    }\n    return newShape;\n}"
+          }
+        ]
+      },
+      {
+        "task_index": 10,
+        "task": "In script.js, implement rotation logic for tetrominoes, ensuring they do not collide with existing blocks or go out of bounds.",
+        "updates": [
+          {
+            "action": "write",
+            "path": "script.js",
+            "content": "// Initialize the game state\nconst gridWidth = 10;\nconst gridHeight = 20;\nlet gameState = Array.from({ length: gridHeight }, () => Array(gridWidth).fill(0));\nlet currentTetromino = null;\n\n// Function to draw the grid on the canvas\nfunction drawGrid() {\n    const canvas = document.getElementById('tetrisCanvas');\n    const ctx = canvas.getContext('2d');\n    canvas.width = gridWidth * 30;\n    canvas.height = gridHeight * 30;\n\n    for (let row = 0; row < gridHeight; row++) {\n        for (let col = 0; col < gridWidth; col++) {\n            ctx.strokeStyle = '#ccc';\n            ctx.strokeRect(col * 30, row * 30, 30, 30);\n            if (gameState[row][col] !== 0) {\n                ctx.fillStyle = gameState[row][col];\n                ctx.fillRect(col * 30, row * 30, 30, 30);\n            }\n        }\n    }\n\n    // Draw the current tetromino\n    if (currentTetromino) {\n        for (let row = 0; row < currentTetromino.shape.length; row++) {\n            for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n                if (currentTetromino.shape[row][col] !== 0) {\n                    ctx.fillStyle = currentTetromino.color;\n                    ctx.fillRect((currentTetromino.x + col) * 30, (currentTetromino.y + row) * 30, 30, 30);\n                }\n            }\n        }\n    }\n}\n\n// Function to place a new tetromino at the top row\nfunction placeNewTetromino() {\n    const tetrominoKeys = Object.keys(tetrominoes);\n    const randomIndex = Math.floor(Math.random() * tetrominoKeys.length);\n    const randomTetrominoKey = tetrominoKeys[randomIndex];\n    currentTetromino = {\n        shape: tetrominoes[randomTetrominoKey].shape,\n        color: tetrominoes[randomTetrominoKey].color,\n        x: Math.floor(gridWidth / 2) - Math.floor(tetrominoes[randomTetrominoKey].shape[0].length / 2),\n        y: 0\n    };\n\n    // Check if the new tetromino can be placed at the top row\n    for (let row = 0; row < currentTetromino.shape.length; row++) {\n        for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n            if (currentTetromino.shape[row][col] !== 0 && gameState[currentTetromino.y + row][currentTetromino.x + col] !== 0) {\n                alert('Game Over!');\n                resetGame();\n                return;\n            }\n        }\n    }\n\n    // Place the new tetromino on the grid\n    for (let row = 0; row < currentTetromino.shape.length; row++) {\n        for (let col = 0; col < currentTetromino.shape[row].length; col++) {\n            if (currentTetromino.shape[row][col] !== 0) {\n                gameState[currentTetromino.y + row][currentTetromino.x + col] = currentTetromino.color;\n            }\n        }\n    }\n\n    // Draw the grid\n    drawGrid();\n}\n\n// Function to reset the game state\nfunction resetGame() {\n    gameState = Array.from({ length: gridHeight }, () => Array(gridWidth).fill(0));\n    placeNewTetromino();\n}\n\n// Initialize the game\nfunction initGame() {\n    drawGrid();\n    placeNewTetromino();\n}\n\n// Call the initGame function to start the game\ninitGame();\n\n// Event listener for key presses\ndocument.addEventListener('keydown', (event) => {\n    switch (event.key) {\n        case 'ArrowLeft':\n            // Move left\n            if (!checkCollision(currentTetromino, -1, 0)) {\n                currentTetromino.x--;\n            }\n            break;\n        case 'ArrowRight':\n            // Move right\n            if (!checkCollision(currentTetromino, 1, 0)) {\n                currentTetromino.x++;\n            }\n            break;\n        case 'ArrowDown':\n            // Soft drop\n            if (!checkCollision(currentTetromino, 0, 1)) {\n                currentTetromino.y++;\n            } else {\n                placeNewTetromino();\n            }\n            break;\n        case 'ArrowUp':\n            // Rotate\n            const rotatedShape = rotate(currentTetromino.shape);\n            if (!checkCollision({ shape: rotatedShape, x: currentTetromino.x, y: currentTetromino.y }, 0, 0)) {\n                currentTetromino.shape = rotatedShape;\n            }\n            break;\n    }\n\n    drawGrid();\n});\n\n// Function to check for collision\nfunction checkCollision(tetromino, offsetX, offsetY) {\n    for (let row = 0; row < tetromino.shape.length; row++) {\n        for (let col = 0; col < tetromino.shape[row].length; col++) {\n            if (tetromino.shape[row][col] !== 0) {\n                const newRow = tetromino.y + row + offsetY;\n                const newCol = tetromino.x + col + offsetX;\n\n                // Check for out of bounds\n                if (newRow < 0 || newRow >= gridHeight || newCol < 0 || newCol >= gridWidth) {\n                    return true;\n                }\n\n                // Check for collision with existing blocks\n                if (gameState[newRow][newCol] !== 0) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n\n// Function to rotate the tetromino\nfunction rotate(shape) {\n    const newShape = [];\n    for (let col = 0; col < shape[0].length; col++) {\n        newShape.push([]);\n        for (let row = shape.length - 1; row >= 0; row--) {\n            newShape[col].push(shape[row][col]);\n        }\n    }\n    return newShape;\n}"
+          }
+        ]
+      },
+      {
+        "task_index": 11,
+        "task": "In script.js, create a function to clear completed lines and update the score accordingly.",
+        "updates": [
+          {
+            "action": "write",
+            "path": "script.js",
+            "content": "// Function to clear completed lines and update the score accordingly\nfunction clearCompletedLines() {\n    let linesCleared = 0;\n    for (let row = gridHeight - 1; row >= 0; row--) {\n        if (gameState[row].every(cell => cell !== 0)) {\n            // Remove the line from the game state\n            gameState.splice(row, 1);\n            // Add a new empty row at the top\n            gameState.unshift(Array(gridWidth).fill(0));\n            linesCleared++;\n        }\n    }\n\n    // Update the score based on the number of lines cleared\n    const scoreElement = document.getElementById('score');\n    let currentScore = parseInt(scoreElement.textContent, 10);\n    if (linesCleared === 1) {\n        currentScore += 40;\n    } else if (linesCleared === 2) {\n        currentScore += 100;\n    } else if (linesCleared === 3) {\n        currentScore += 300;\n    } else if (linesCleared === 4) {\n        currentScore += 1200;\n    }\n    scoreElement.textContent = currentScore;\n\n    // Draw the updated grid\n    drawGrid();\n}\n\n// Call clearCompletedLines function when a new tetromino is placed\ndocument.addEventListener('keydown', (event) => {\n    switch (event.key) {\n        case 'ArrowDown':\n            // Soft drop\n            if (!checkCollision(currentTetromino, 0, 1)) {\n                currentTetromino.y++;\n            } else {\n                placeNewTetromino();\n                clearCompletedLines(); // Clear completed lines after placing a new tetromino\n            }\n            break;\n    }\n\n    drawGrid();\n});"
+          }
+        ]
+      },
+      {
+        "task_index": 12,
+        "task": "In localStorageManager.js, implement functions to save and load the player's high score using HTML5 LocalStorage.",
+        "updates": [
+          {
+            "action": "write",
+            "path": "localStorageManager.js",
+            "content": "// Function to save the player's high score to localStorage\nfunction saveHighScore(score) {\n    let highScore = localStorage.getItem('highScore');\n    if (highScore === null || parseInt(highScore, 10) < score) {\n        localStorage.setItem('highScore', score);\n    }\n}\n\n// Function to load the player's high score from localStorage\nfunction loadHighScore() {\n    return localStorage.getItem('highScore') || 0;\n}\n"
+          }
+        ]
+      },
+      {
+        "task_index": 13,
+        "task": "In script.js, integrate the high score functionality by updating it whenever a new high score is achieved.",
+        "updates": [
+          {
+            "action": "write",
+            "path": "script.js",
+            "content": "// Function to clear completed lines and update the score accordingly\nfunction clearCompletedLines() {\n    let linesCleared = 0;\n    for (let row = gridHeight - 1; row >= 0; row--) {\n        if (gameState[row].every(cell => cell !== 0)) {\n            // Remove the line from the game state\n            gameState.splice(row, 1);\n            // Add a new empty row at the top\n            gameState.unshift(Array(gridWidth).fill(0));\n            linesCleared++;\n        }\n    }\n\n    // Update the score based on the number of lines cleared\n    const scoreElement = document.getElementById('score');\n    let currentScore = parseInt(scoreElement.textContent, 10);\n    if (linesCleared === 1) {\n        currentScore += 40;\n    } else if (linesCleared === 2) {\n        currentScore += 100;\n    } else if (linesCleared === 3) {\n        currentScore += 300;\n    } else if (linesCleared === 4) {\n        currentScore += 1200;\n    }\n    scoreElement.textContent = currentScore;\n\n    // Save the new high score to localStorage\n    saveHighScore(currentScore);\n\n    // Draw the updated grid\n    drawGrid();\n}\n\n// Call clearCompletedLines function when a new tetromino is placed\ndocument.addEventListener('keydown', (event) => {\n    switch (event.key) {\n        case 'ArrowDown':\n            // Soft drop\n            if (!checkCollision(currentTetromino, 0, 1)) {\n                currentTetromino.y++;\n            } else {\n                placeNewTetromino();\n                clearCompletedLines(); // Clear completed lines after placing a new tetromino\n            }\n            break;\n    }\n\n    drawGrid();\n});\n\n// Function to save the player's high score to localStorage\nfunction saveHighScore(score) {\n    let highScore = localStorage.getItem('highScore');\n    if (highScore === null || parseInt(highScore, 10) < score) {\n        localStorage.setItem('highScore', score);\n    }\n}\n\n// Function to load the player's high score from localStorage\nfunction loadHighScore() {\n    return localStorage.getItem('highScore') || 0;\n}"
           }
         ]
       }

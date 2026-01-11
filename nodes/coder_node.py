@@ -49,8 +49,9 @@ def coder_node(state: PlanState, llm):
     === STRICT CONSTRAINTS ===
     1. **HTML-First UI**: If editing HTML, you MUST include the actual UI elements (buttons, inputs, divs) mentioned in the features. Do NOT create empty <body> tags.
     2. **Allowed Files**: Only read/write: [{allowed_files_str}].
-    3. **Tech Stack**: Use ONLY: {tech_stack_str}.
-    4. **No Placeholders**: Write the FULL functional code.
+    3. **Wiring Integrity**: If generating an HTML file, you MUST Include <script src="..."> for EVERY .js file and <link rel="stylesheet"> for EVERY .css file listed in 'Allowed Files'. Do not omit any.
+    4. **Tech Stack**: Use ONLY: {tech_stack_str}.
+    5. **No Placeholders**: Write the FULL functional code.
     
     === CURRENT FILES ===
     {project_context}

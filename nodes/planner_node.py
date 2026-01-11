@@ -17,8 +17,8 @@ def planner_node(state: PlanState, llm):
     Stack: {tech_stack}
     Features: {features}
     
-    Output strictly a JSON dict {{filename: purpose}}.
-    Example: {{"index.html": "Main UI", "script.js": "Logic"}}
+    Output strictly a JSON dict {{filename: "Detailed description of contents, functions, and classes"}}.
+    Example: {{"index.html": "Main UI with canvas", "script.js": "Game loop, event listeners, and collision logic"}}
     """
     
     resp_files = llm.invoke([HumanMessage(content=file_prompt)])
@@ -44,7 +44,13 @@ def planner_node(state: PlanState, llm):
            - Step 1: HTML (Structure + UI Elements).
            - Step 2: CSS (Styling).
            - Step 3: JS (Logic).
-        3. **Wiring**: Ensure HTML links to CSS/JS in step 1.
+        3. **Wiring**: Step 1 (HTML) MUST explicitly list ALL JS/CSS files to be imported.
+           - BAD: "Create index.html"
+           - GOOD: "Create index.html importing script.js, style.css, game.js, and utils.js."
+        4. **Relevance**: Tasks must ONLY implement the requested features.
+           - WARNING: Do NOT include generic "Todo List", "User Profile", or "CRUD" elements (like 'Add Button', 'Input Form') unless the app specifically requires them.
+           - For Games: Use <canvas>, Scoreboard, and Divs.
+           - For Apps: Use specific UI components.
         
         Output strictly a JSON list of strings.
     """
@@ -62,9 +68,16 @@ def planner_node(state: PlanState, llm):
     for filename, purpose in file_structure.items():
         covered = False
         for task in task_queue:
+            # CHECK: A file is only "covered" if the task is NOT just importing it.
+            # If filename is "index.html", any mention is likely fine (creating it).
+            # For other files, avoid "Import script.js in index.html" counting as coverage.
             if filename in task:
-                covered = True
-                break
+                if filename == "index.html":
+                    covered = True
+                    break
+                elif "Import" not in task and "Link" not in task:
+                    covered = True
+                    break
         
         if not covered:
             print(f"⚠️ Planner: Auto-injecting missing task for {filename}")
